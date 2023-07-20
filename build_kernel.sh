@@ -5,13 +5,13 @@ mkdir out
 DTB_DIR=$(pwd)/out/arch/arm64/boot/dts
 mkdir ${DTB_DIR}/exynos
 
-export PLATFORM_VERSION=11
-export ANDROID_MAJOR_VERSION=r
+export PLATFORM_VERSION=13
+export ANDROID_MAJOR_VERSION=t
 export SEC_BUILD_CONF_VENDOR_BUILD_OS=13
 
 make O=out ARCH=arm64 exynos9830-r8slte_defconfig
 
-make O=out ARCH=arm64 -j8
+make O=out ARCH=arm64 -j4
 
 $(pwd)/tools/mkdtimg cfg_create $(pwd)/out/dtb.img dt.configs/exynos9830.cfg -d ${DTB_DIR}/exynos
 
